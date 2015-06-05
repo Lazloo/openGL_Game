@@ -99,8 +99,9 @@ void ALFWShutdown()
 		g_pWaveLoader = NULL;
 	}
 
-	ALFWprintf("\nPress a key to quit\n");
-	ALchar ch = _getch();
+	//printf("ALFWShutdown \n");
+	//ALFWprintf("\nPress a key to quit\n");
+	//ALchar ch = _getch();
 }
 
 ALboolean ALFWInitOpenAL()
@@ -181,9 +182,10 @@ ALboolean ALFWInitOpenALUserDefined(ALint iDevice)
 			}
 		}
 
-		delete pDeviceList;
+		
 	}
 
+	delete pDeviceList;
 	return bReturn;
 }
 

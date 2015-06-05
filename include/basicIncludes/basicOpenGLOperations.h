@@ -7,7 +7,9 @@ class basicOpenGLOperations
 {
 public:
 	explicit basicOpenGLOperations(void);
-	virtual ~basicOpenGLOperations(void){ ALFWShutdown(); };
+	virtual ~basicOpenGLOperations(void){ 
+		ALFWShutdown();    
+	 };
 
 	// Do Initialization of the class members
 	void doInit(void);
