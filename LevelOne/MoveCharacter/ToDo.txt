@@ -1,0 +1,11 @@
+#####- Move Camera with model
+#####- Use vector<vector> for saving type of movementType, gravitation ...
+#####- Allow resizing the window without letting models vanish
+#####- reset if a cpu is touched
+#####-reset if distance<-10
+- Debug moving: Main Character falls through the trees...
+- music = use mp3 instead of wave
+- stop time when level is build
+- talk with friendly cpu
+- Add new field to PropertyVector = [4] ... event type
+- Models fall throught the ground if the window is clicked
