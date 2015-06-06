@@ -250,7 +250,7 @@ void ALFWprintf( const char* x, ... )
 ALchar fullPath[_MAX_PATH];
 ALchar *ALFWaddMediaPath(const ALchar *filename)
 {
-	sprintf(fullPath, "%s%s", "", filename);
+	sprintf_s(fullPath, "%s%s", "", filename);
 	return fullPath;
 }
 

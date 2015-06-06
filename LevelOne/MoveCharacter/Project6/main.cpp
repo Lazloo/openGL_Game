@@ -54,25 +54,8 @@ int main(void){
 	//levelObject.OpenGLObject.loadAndPlayWaveFile("music/testWave.wav");
 	
 	do{
-		//if(doIni){
-		//	std::cout<<"New Level"<<std::endl;
-		//	levelVec[indexLevel].doInit();
-		//	switch (indexLevel)
-		//	{
-
-		//	case 0:{
-		//		levelVec[indexLevel].addModelFromFile("home.txt");
-		//			}break;
-		//	case 1:{
-		//		levelVec[indexLevel].addModelFromFile("home.txt");
-		//			}break;
-		//	default:
-		//		break;
-		//	}			
-		//	doIni = false;
-		//	glfwSetTime(0.0);
-		//}
-
+		
+		// Level is already initialized
 		if(indexLevel==indexLevelOld)
 		{
 			if(!(levelVec[indexLevel].getPrintTextFlag())){
@@ -84,32 +67,39 @@ int main(void){
 				//std::cout<<"YES"<<std::endl;
 				levelVec[indexLevel].pressedButtonsTextIsActive();
 			}
+			// Create Callback for model position
+			glm::vec2 position = levelVec[indexLevel].getListOfObjectsReferences()[levelVec[indexLevel].getIndexMainCharacter()].getModelPosition();
+			levelVec[indexLevel].pressedButtonsTextIsActive();
+
+			std::cout << "Position H: " << position[0] << "\tV: " << position[1] << std::endl;
+
 			double xpos, ypos;
 			glfwGetCursorPos(levelVec[indexLevel].OpenGLObject.getWindowMember(),&xpos,&ypos);
 			levelVec[indexLevel].OpenGLObject.checkWindowSize();
 			levelVec[indexLevel].drawLevel();
 
+			// Close old level window and create new level window if either ESC was pressed or if Window was closed
+			// Additionally change index of levels (indexLevel) such that new level can be created
 			if(glfwGetKey(levelVec[indexLevel].getOpenGLObject().getWindowMember(),GLFW_KEY_ESCAPE) == GLFW_PRESS){
 				indexLevel=1;
 				glfwTerminate();
 			}
 		}
+		// New Level has to be initialized
 		else
 		{
-
 			std::cout<<"New Level"<<std::endl;
 			levelVec[indexLevel].doInit();
 			switch (indexLevel)
 			{
-
-			case 0:{
-				levelVec[indexLevel].addModelFromFile("home.txt");
-					}break;
-			case 1:{
-				levelVec[indexLevel].addModelFromFile("home.txt");
-					}break;
-			default:
-				break;
+				case 0:{
+					levelVec[indexLevel].addModelFromFile("home1.txt");
+						}break;
+				case 1:{
+					levelVec[indexLevel].addModelFromFile("testLevel2.txt");
+						}break;
+				default:
+					break;
 			}			
 			//doIni = false;
 			glfwSetTime(0.0);

@@ -198,10 +198,10 @@ void LevelOne::addModelFromFile(std::string fileName){
 		testBool = testBool||!(iss >> gravity);
 		testBool = testBool||!(iss >> relationToMainChara);
 		testBool = testBool||!(iss >> eventIndex);
-		std::cout<<"modelType: "<<modelType<<"\tmovementType: "<<movementType<<std::endl;
-		std::cout<<"movementDetails: "<<movementDetails<<"\tgravity: "<<gravity<<std::endl;
-		std::cout<<"relationToMainChara: "<<relationToMainChara<<"\teventIndex: "<<eventIndex<<std::endl;
-		std::cout<<"x: "<<modelPos[0]<<"\ty: "<<modelPos[1]<<std::endl;
+		//std::cout<<"modelType: "<<modelType<<"\tmovementType: "<<movementType<<std::endl;
+		//std::cout<<"movementDetails: "<<movementDetails<<"\tgravity: "<<gravity<<std::endl;
+		//std::cout<<"relationToMainChara: "<<relationToMainChara<<"\teventIndex: "<<eventIndex<<std::endl;
+		//std::cout<<"x: "<<modelPos[0]<<"\ty: "<<modelPos[1]<<std::endl;
         //if (!(iss >> modelType >> modelPos[0]>>modelPos[1]>>movementType>>movementDetails>>gravity>>relationToMainChara>>eventIndex)) {
 		if(testBool){
 			std::cout<<line<<std::endl;
