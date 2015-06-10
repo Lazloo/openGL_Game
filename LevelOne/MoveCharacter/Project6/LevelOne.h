@@ -32,11 +32,20 @@ public:
 	void pressedButtonsTextIsActive(void);
 
 	void doEvent(std::size_t indexEvent,std::size_t modelIndex);
+
+	void checkLevelIndex(void);
+
+	void devideMapInParts(void);
+
 // ########## Get ########## 
 
 	std::vector<basicModelOperations> getListOfObjectsReferences(void){
 		return ListOfObjectsReferences;
 	}
+
+	std::size_t getLevelIndex(){
+	
+	};
 
 	basicOpenGLOperations getOpenGLObject(void){
 		return OpenGLObject;
@@ -76,6 +85,14 @@ public:
 
 	std::size_t getNextLevel(void){
 		return NextLevel;
+	};
+
+	double getLevelWidth(void){
+		return LevelWidth;
+	};
+
+	double getLevelHeight(void){
+		return LevelHeight;
 	};
 
 // ########## Set ########## 
@@ -191,5 +208,9 @@ private:
 
 	// This member variable defines the index of the level which shall be displayed
 	std::size_t NextLevel;
+	
+	//
+	double LevelWidth;
+	double LevelHeight;
 };
 

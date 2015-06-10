@@ -1,0 +1,9 @@
+- complete devideMapInParts (LevelWidth and LevelHeight) 
+	- divide the level in floor(width/10*standardModelWidth) parts;
+- complete checkLevelIndex (use devideMapInParts)
+	- create events -> check in all 10 area of the level if the one of the level changing event occurred (e.g. reach a specific area)
+	- if yes -> change NextLevel using macros LEVEL_TEST_TWO  and LEVEL_TEST
+	
+
+	
+- create super class for all level. In this file all level macros should be defined

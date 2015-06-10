@@ -25,6 +25,9 @@
 #include "LevelOne.h"
 //#include <common/texture.cpp>
 
+#define LEVEL_TEST 1
+#define LEVEL_TEST_TWO 2
+
 LevelOne::LevelOne(void)
 {
 	//ListOfObjectsReferences.resize(0);
@@ -76,6 +79,10 @@ void LevelOne::doInit(void){
 	TextLine2 = "Test Test";
 	stateKeyEnter = GLFW_RELEASE;
 	OpenGLObject.initText2D("Images/ExportedFont.dds");
+
+	NextLevel = LEVEL_TEST;
+	LevelWidth = 0.0;
+	LevelHeight = 0.0;
 }
 void LevelOne::addTrees(void){
 
@@ -185,6 +192,10 @@ void LevelOne::addModelFromFile(std::string fileName){
 
 	// First Line contains the size of the level
 	std::getline(myFile, line);
+	std::istringstream issFirst(line);
+	issFirst >> LevelWidth;
+	issFirst >> LevelHeight;
+	//std::cout << "LevelWidth: " << LevelWidth << "\tLevelHeight: " << LevelHeight << std::endl;
 
 	while (std::getline(myFile, line))
     {
@@ -320,6 +331,12 @@ void LevelOne::doEvent(std::size_t indexEvent,std::size_t modelIndex){
 	default:
 		break;
 	}
+};
+
+void LevelOne::checkLevelIndex(void){
+	
+	
+	//LevelIndex;
 };
 
 void LevelOne::moveModels(void){

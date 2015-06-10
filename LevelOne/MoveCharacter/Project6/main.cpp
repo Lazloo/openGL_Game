@@ -27,8 +27,6 @@ std::ofstream feedbackTextFile;
 //class LevelOne levelObject;
 
 
-
-
 int main(void){
 	//_CrtSetBreakAlloc(601);
 	//// Save the data in a text file
@@ -71,7 +69,7 @@ int main(void){
 			glm::vec2 position = levelVec[indexLevel].getListOfObjectsReferences()[levelVec[indexLevel].getIndexMainCharacter()].getModelPosition();
 			levelVec[indexLevel].pressedButtonsTextIsActive();
 
-			std::cout << "Position H: " << position[0] << "\tV: " << position[1] << std::endl;
+			//std::cout << "Position H: " << position[0] << "\tV: " << position[1] << std::endl;
 
 			double xpos, ypos;
 			glfwGetCursorPos(levelVec[indexLevel].OpenGLObject.getWindowMember(),&xpos,&ypos);
@@ -103,7 +101,7 @@ int main(void){
 			}			
 			//doIni = false;
 			glfwSetTime(0.0);
-			
+			//std::cout << levelVec[indexLevel].getLevelWidth() << "\t" << levelVec[indexLevel].getLevelHeight();
 			//doIni = true;
 			indexLevelOld = indexLevel;
 		}
