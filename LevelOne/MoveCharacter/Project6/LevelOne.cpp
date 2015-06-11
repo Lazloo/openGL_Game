@@ -53,6 +53,8 @@ LevelOne::~LevelOne(void)
 	}
 	ListOfObjectsReferences.~ListOfObjectsReferences();
 	OpenGLObject.~basicOpenGLOperations();
+
+	OpenGLObject.freeOpenALBuffer();
 }
 
 void LevelOne::doInit(void){
@@ -364,7 +366,7 @@ void LevelOne::moveModels(void){
 			for(int iModel2=0;iModel2<PropertyVector.size();iModel2++){
 				if((MoveModel.getCollisionVectorTmp()[iModel2]==true)&&PropertyVector[iModel2][3]==1){
 					ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
-					std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
+					//std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
 				}
 			}
 		}
@@ -382,7 +384,7 @@ void LevelOne::moveModels(void){
 		if((MoveModel.getCollisionVectorTmp()[iModel2]==true)&&PropertyVector[iModel2][3]==1){
 			ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
 			//MoveModel.moveModelByKeyboardJumpNRun(ListOfObjectsReferences,iModel);
-			std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
+			//std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
 		}
 	}
 	// Gravitation
