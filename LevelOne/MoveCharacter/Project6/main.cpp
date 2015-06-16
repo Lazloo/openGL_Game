@@ -91,10 +91,10 @@ int main(void){
 			switch (indexLevel)
 			{
 				case 0:{
-					levelVec[indexLevel].addModelFromFile("home1.txt");
+					levelVec[indexLevel].addModelFromFile("homeTest.txt");
 						}break;
 				case 1:{
-					levelVec[indexLevel].addModelFromFile("testLevel2.txt");
+					levelVec[indexLevel].addModelFromFile("homeTest.txt");
 						}break;
 				default:
 					break;

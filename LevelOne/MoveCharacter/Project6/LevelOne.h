@@ -192,6 +192,9 @@ private:
 	// Fifth column: Index of event that happens if enter is pressed if main character 
 	//			     and model are near to each other
 	//		- 0 ... nothing happens
+	// Sixth column: Index of event that happens if collision with main character 
+	//			     and another model happens
+	//		- 0 ... nothing happens
 	std::vector<std::vector<double>> PropertyVector;
 	
 	glm::vec2 ResetPosition;

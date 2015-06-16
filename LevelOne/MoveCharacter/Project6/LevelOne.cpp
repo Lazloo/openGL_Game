@@ -243,7 +243,7 @@ void LevelOne::addModelFromFile(std::string fileName){
 
 		ListOfObjectsReferences[ListOfObjectsReferences.size()-1].setModelPositionAndReferencePoint(glm::vec2(modelPos[0]/55,-modelPos[1]/55));
 		ListOfObjectsReferences[ListOfObjectsReferences.size()-1].setCurrentWindow(OpenGLObject.getWindowMember());
-		PropertyVector.push_back(std::vector<double>(5,0));
+		PropertyVector.push_back(std::vector<double>(6,0));
 		// Allow jumpNrun
 		PropertyVector[ListOfObjectsReferences.size()-1][0]=static_cast<double>(movementType);
 		// Allow jumpNrun
@@ -252,8 +252,10 @@ void LevelOne::addModelFromFile(std::string fileName){
 		PropertyVector[ListOfObjectsReferences.size()-1][2]=static_cast<double>(gravity);
 		// is friend
 		PropertyVector[ListOfObjectsReferences.size()-1][3]=static_cast<double>(relationToMainChara);
-		// No Event
+		// Event if Enter is pressed
 		PropertyVector[ListOfObjectsReferences.size()-1][4]=static_cast<double>(eventIndex);
+		// Event as soon as collision happens
+		PropertyVector[ListOfObjectsReferences.size() - 1][5] = static_cast<double>(eventIndex);
     }
 
 
@@ -330,6 +332,8 @@ void LevelOne::doEvent(std::size_t indexEvent,std::size_t modelIndex){
 			TextLine2 = "Hallo Hallo";
 			saveIndexTextEvent = modelIndex;
 			PrintTextFlag = !PrintTextFlag;
+		case 2:
+			ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
 	default:
 		break;
 	}
@@ -357,34 +361,38 @@ void LevelOne::moveModels(void){
 				break;
 		}
 
-		// Run into an enemy
+		// Main Character run into an APC
 		if(iModel==IndexMainCharacter){
 			// Standard Jump and run movement
 			//MoveModel.resetLastTime();
 			MoveModel.moveModelByKeyboardJumpNRun(ListOfObjectsReferences,iModel);
 			// Check for Collision
 			for(int iModel2=0;iModel2<PropertyVector.size();iModel2++){
-				if((MoveModel.getCollisionVectorTmp()[iModel2]==true)&&PropertyVector[iModel2][3]==1){
-					ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
-					//std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
+				// If Model collide against each other
+				if ((MoveModel.getCollisionVectorTmp()[iModel2] == true)){
+					doEvent(static_cast<std::size_t>(PropertyVector[iModel2][5]), iModel2);
 				}
 			}
 		}
 
-		// Enemy run into main character
+		// APC runs into main character
 		else if(PropertyVector[iModel][3]==1){
-			if((MoveModel.getCollisionVectorTmp()[IndexMainCharacter]==true)){
-				ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
+			// Check Collision
+			if ((MoveModel.getCollisionVectorTmp()[IndexMainCharacter] == true)){
+				doEvent(static_cast<std::size_t>(PropertyVector[iModel][5]), iModel);
 			}
 		}
 	}
 
 	MoveModel.moveModelByKeyboardJumpNRun(ListOfObjectsReferences,IndexMainCharacter);
 	for(int iModel2=0;iModel2<PropertyVector.size();iModel2++){
-		if((MoveModel.getCollisionVectorTmp()[iModel2]==true)&&PropertyVector[iModel2][3]==1){
-			ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
-			//MoveModel.moveModelByKeyboardJumpNRun(ListOfObjectsReferences,iModel);
-			//std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
+		//if ((MoveModel.getCollisionVectorTmp()[iModel2] == true) && PropertyVector[iModel2][3] == 1){
+		//	ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
+		//	//MoveModel.moveModelByKeyboardJumpNRun(ListOfObjectsReferences,iModel);
+		//	//std::cout<<"iModel2: "<<iModel2<<"\tPropertyVector[iModel2][3]: "<<PropertyVector[iModel2][3]<<std::endl;
+		//}
+		if ((MoveModel.getCollisionVectorTmp()[iModel2] == true) && PropertyVector[iModel2][3] == 1){
+			doEvent(static_cast<std::size_t>(PropertyVector[iModel2][5]), iModel2);
 		}
 	}
 	// Gravitation
