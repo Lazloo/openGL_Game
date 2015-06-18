@@ -211,6 +211,7 @@ private:
 
 	// This member variable defines the index of the level which shall be displayed
 	std::size_t NextLevel;
+
 	
 	//
 	double LevelWidth;

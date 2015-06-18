@@ -25,8 +25,8 @@
 #include "LevelOne.h"
 //#include <common/texture.cpp>
 
-#define LEVEL_TEST 1
-#define LEVEL_TEST_TWO 2
+#define LEVEL_TEST 0
+#define LEVEL_TEST_TWO 1
 
 LevelOne::LevelOne(void)
 {
@@ -63,6 +63,9 @@ void LevelOne::doInit(void){
 	PropertyVector.resize(0);
 	OpenGLObject.createMVP();
 
+	// Reset Time such that the movement correction at the beginning can be better controled
+	//MoveModel.resetLastTime();
+	//MoveModel.setStartTimeJump(glfwGetTime());
 	// Set Options
 	//// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
@@ -263,6 +266,10 @@ void LevelOne::addModelFromFile(std::string fileName){
 	ListOfObjectsReferences.push_back(mainCharacter());
 	//ListOfObjectsReferences[ListOfObjectsReferences.size()-1].setModelPositionAndReferencePoint(glm::vec2(3,10));
 	ListOfObjectsReferences[ListOfObjectsReferences.size()-1].setModelPositionAndReferencePoint(glm::vec2(486.5/55,-2678/55));
+	// ##########################################
+	//glm::vec2 testVec = ListOfObjectsReferences[ListOfObjectsReferences.size() - 1].getModelPosition();
+	//std::cout << "StartPosition H: " << testVec[0] << "W: " << testVec[1] << std::endl;
+	// ##########################################
 	ListOfObjectsReferences[ListOfObjectsReferences.size()-1].setCurrentWindow(OpenGLObject.getWindowMember());
 	IndexMainCharacter = ListOfObjectsReferences.size()-1;
 	PropertyVector.push_back(std::vector<double>(5,0));
@@ -279,6 +286,10 @@ void LevelOne::addModelFromFile(std::string fileName){
 	// Position if hit by the enemy
 	ResetPosition[0]=3;
 	ResetPosition[1]=-2678/55;
+	//// ##########################################
+	//glm::vec2 testVec = ListOfObjectsReferences[IndexMainCharacter].getModelPosition();
+	//std::cout << "StartPosition H: " << testVec[0] << "W: " << testVec[1] << std::endl;
+	//// ##########################################
 };
 
 void LevelOne::pressedButtonsTextIsActive(void){
@@ -334,6 +345,8 @@ void LevelOne::doEvent(std::size_t indexEvent,std::size_t modelIndex){
 			PrintTextFlag = !PrintTextFlag;
 		case 2:
 			ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
+		case 3:
+			NextLevel = LEVEL_TEST_TWO;
 	default:
 		break;
 	}
