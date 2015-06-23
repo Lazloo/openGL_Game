@@ -18,13 +18,13 @@
 //#define MODELDEF
 //	//#include "Model.h"
 //#endif
-#include "mainCharacter.h"
+#include "invisibleBlock.h"
 
 
-mainCharacter::mainCharacter(void)
+invisibleBlock::invisibleBlock(void)
 {
 	// Stuff which has always to be done regards less what happens after
-	mainCharacter::doInit();
+	invisibleBlock::doInit();
 	GLfloat g_vertex_buffer_data[] = {
 		-1.0f,-1.0f,1.0f,	-1.0f,1.0f,1.0f,	0.6f,1.0f,1.0f, // Front = 1
 		-1.0f,-1.0f,1.0f,	0.6f,-1.0f,1.0f,	0.6f,1.0f,1.0f,
@@ -135,7 +135,7 @@ mainCharacter::mainCharacter(void)
 }
 
 
-mainCharacter::~mainCharacter(void)
+invisibleBlock::~invisibleBlock(void)
 {
 }
 

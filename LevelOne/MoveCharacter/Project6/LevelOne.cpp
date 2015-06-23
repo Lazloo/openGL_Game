@@ -193,7 +193,8 @@ void LevelOne::addModelFromFile(std::string fileName){
 	double  movementDetails=0;
 	std::size_t  gravity=0;
 	std::size_t  relationToMainChara=0;
-	std::size_t  eventIndex=0;
+	std::size_t  eventIndex = 0;
+	std::size_t  eventIndex2 = 0;
 
 	// First Line contains the size of the level
 	std::getline(myFile, line);
@@ -213,7 +214,8 @@ void LevelOne::addModelFromFile(std::string fileName){
 		testBool = testBool||!(iss >> movementDetails);
 		testBool = testBool||!(iss >> gravity);
 		testBool = testBool||!(iss >> relationToMainChara);
-		testBool = testBool||!(iss >> eventIndex);
+		testBool = testBool || !(iss >> eventIndex);
+		testBool = testBool || !(iss >> eventIndex2);
 		//std::cout<<"modelType: "<<modelType<<"\tmovementType: "<<movementType<<std::endl;
 		//std::cout<<"movementDetails: "<<movementDetails<<"\tgravity: "<<gravity<<std::endl;
 		//std::cout<<"relationToMainChara: "<<relationToMainChara<<"\teventIndex: "<<eventIndex<<std::endl;
@@ -240,6 +242,9 @@ void LevelOne::addModelFromFile(std::string fileName){
 		case 3:
 			ListOfObjectsReferences.push_back(tree1());
 			break;
+		case 4:
+			ListOfObjectsReferences.push_back(invisibleBlock());
+			break;
 		default:
 			break;
 		}
@@ -258,7 +263,7 @@ void LevelOne::addModelFromFile(std::string fileName){
 		// Event if Enter is pressed
 		PropertyVector[ListOfObjectsReferences.size()-1][4]=static_cast<double>(eventIndex);
 		// Event as soon as collision happens
-		PropertyVector[ListOfObjectsReferences.size() - 1][5] = static_cast<double>(eventIndex);
+		PropertyVector[ListOfObjectsReferences.size() - 1][5] = static_cast<double>(eventIndex2);
     }
 
 
@@ -334,6 +339,8 @@ void LevelOne::pressedButtons(void){
 
 
 void LevelOne::doEvent(std::size_t indexEvent,std::size_t modelIndex){
+
+	std::cout << "indexEvent: " << indexEvent << "\tmodelIndex: " << modelIndex << std::endl;
 	switch (indexEvent)
 	{
 		case 0:
@@ -343,10 +350,19 @@ void LevelOne::doEvent(std::size_t indexEvent,std::size_t modelIndex){
 			TextLine2 = "Hallo Hallo";
 			saveIndexTextEvent = modelIndex;
 			PrintTextFlag = !PrintTextFlag;
+			break;
 		case 2:
 			ListOfObjectsReferences[IndexMainCharacter].setModelPositionAndReferencePoint(ResetPosition);
+			break;
 		case 3:
 			NextLevel = LEVEL_TEST_TWO;
+			break;
+		case 4:
+			TextLine1 = "This is just a test";
+			TextLine2 = "Hallo Hallo";
+			saveIndexTextEvent = modelIndex;
+			PrintTextFlag = !PrintTextFlag;
+			break;
 	default:
 		break;
 	}

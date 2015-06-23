@@ -5,6 +5,7 @@
 #include "models\mainCharacter.h"
 #include "models\monster1.h"
 #include "models\catGirl.h"
+#include "models\invisibleBlock.h"
 //#include <common/texture.cpp>
 #pragma once
 class LevelOne
@@ -195,6 +196,9 @@ private:
 	// Sixth column: Index of event that happens if collision with main character 
 	//			     and another model happens
 	//		- 0 ... nothing happens
+	// Seventh column: Is physically avaiable? (Can models do not run through?)
+	//		- 0 No (Models can run through)
+	//		- 1 Yes (Models cannot run through)
 	std::vector<std::vector<double>> PropertyVector;
 	
 	glm::vec2 ResetPosition;

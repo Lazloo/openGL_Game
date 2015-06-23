@@ -184,6 +184,7 @@
     <ClCompile Include="..\..\..\include\basicIncludes\moveModel.cpp" />
     <ClCompile Include="..\..\..\include\common\text2D.cpp" />
     <ClCompile Include="..\..\..\include\models\catGirl.cpp" />
+    <ClCompile Include="..\..\..\include\models\invisibleBlock.cpp" />
     <ClCompile Include="..\..\..\include\models\mainCharacter.cpp" />
     <ClCompile Include="..\..\..\include\models\monster1.cpp" />
     <ClCompile Include="..\..\..\include\models\Tree1.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="..\..\..\include\basicIncludes\moveModel.h" />
     <ClInclude Include="..\..\..\include\common\text2D.hpp" />
     <ClInclude Include="..\..\..\include\models\catGirl.h" />
+    <ClInclude Include="..\..\..\include\models\invisibleBlock.h" />
     <ClInclude Include="..\..\..\include\models\mainCharacter.h" />
     <ClInclude Include="..\..\..\include\models\monster1.h" />
     <ClInclude Include="..\..\..\include\models\Tree1.h" />

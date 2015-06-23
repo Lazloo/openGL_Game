@@ -63,6 +63,9 @@
     <ClCompile Include="..\..\..\include\AL\LoadOAL.cpp">
       <Filter>Source Files\OpenAL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\include\models\invisibleBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\models\mainCharacter.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\AL\LoadOAL.h">
       <Filter>Header Files\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\models\invisibleBlock.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
